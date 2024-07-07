@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form Submission</title>
+</head>
+<body>
+  <h2>Contact Form Submission</h2>
+  <h3>User Input:</h3>
+  <p><strong>Name:</strong> <span id="name"></span></p>
+  <p><strong>Email:</strong> <span id="email"></span></p>
+  <p><strong>Subscribe to email list:</strong> <span id="subscribe"></span></p>
+  <p><strong>Comments:</strong> <span id="comments"></span></p>
+  <p><strong>Contact Preference:</strong> <span id="contactPreference"></span></p>
+  <p><strong>State:</strong> <span id="state"></span></p>
+
+  <script>
+    function getQueryParams() {
+      var params = {};
+      var search = window.location.search.substring(1);
+      var pairs = search.split('&');
+
+      for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        var key = decodeURIComponent(pair[0]);
+        var value = decodeURIComponent(pair[1]);
+        params[key] = value;
+      }
+
+      return params;
+    }
+
+    var queryParams = getQueryParams();
+
+    // Display the user input
+    document.getElementById('name').textContent = queryParams.name || '';
+    document.getElementById('email').textContent = queryParams.email || '';
+    document.getElementById('subscribe').textContent = queryParams.subscribe || '';
+    document.getElementById('comments').textContent = queryParams.comments || '';
+    document.getElementById('contactPreference').textContent = queryParams.contactPreference || '';
+    document.getElementById('state').textContent = queryParams.state || '';
+  </script>
+</body>
+</html>
